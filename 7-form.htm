@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Form demo</title>
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+	<style type="text/css">
+		
+	</style>
+</head>
+<body>
+	<header>
+		<h1>Form demo</h1>
+	</header>
+	<article>
+		<form id="contForm1" action="" method="post">
+			<div>
+			<label for="uname" required="required">User name: </label><input type="text" name="uname" value="" placeholder="Input your name">
+			</div>
+			
+			<div>
+			<label for="uregion">User region: </label>
+			<select id="uregion" name="uregion">
+				<option value="US">USA</option>
+				<option value="EU">Europe</option>
+				<option value="UA" selected="selected">Ukraine</option>
+				<option value="RU">Russia</option>
+			</select>
+			</div>
+			
+			<div>
+			<label for="uemail" required="required">User email: </label><input type="email" name="uemail" value="" placeholder="Input your email">
+			</div>
+			<div>
+			<label for="ucomment">User comment: </label>
+			<textarea cols="45" rows="15" name="ucomment" placeholder="Input your comment"></textarea>
+			</div>
+			<div>
+				<input type="submit" value="Send email">
+			</div>
+		</form>
+		<div class="result">
+		</div>
+		<script>
+
+			jQuery("#contForm1").submit(function(){
+				jQuery.post(
+					'send.php',
+					jQuery( "#contForm1" ).serialize(),
+					function( data ) {
+				  jQuery( ".result" ).html( data );
+				});
+				
+				return false;
+			});
+		</script>
+	</article>
+	<hr>
+	<footer>
+		<div>Copyright </div>
+	</footer>
+</body>
+</html>
